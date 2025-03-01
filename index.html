@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cárdenas y Asociados</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Login -->
+        <div id="login-screen" class="screen active">
+            <div class="login-container">
+                <h1>Cárdenas y Asociados</h1>
+                <p class="subtitle">Gestión Legal Simplificada</p>
+                <div class="login-form">
+                    <input type="email" placeholder="Correo Electrónico" id="email" class="input-field">
+                    <input type="password" placeholder="Contraseña (1234)" id="password" class="input-field">
+                    <button onclick="login()" class="btn-primary"><i class="fas fa-sign-in-alt"></i> Iniciar Sesión</button>
+                    <p class="link"><a href="#" onclick="navigate('admin-login')">¿Eres Administrador?</a></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dashboard Cliente -->
+        <div id="dashboard-screen" class="screen">
+            <header class="dashboard-header">
+                <h2><i class="fas fa-user"></i> Bienvenido, Juan Pérez</h2>
+                <nav class="dashboard-nav">
+                    <button onclick="navigate('dashboard-screen')" class="nav-btn active"><i class="fas fa-home"></i> Inicio</button>
+                    <button onclick="navigate('invoices')" class="nav-btn"><i class="fas fa-file-invoice"></i> Facturas</button>
+                    <button onclick="navigate('documents')" class="nav-btn"><i class="fas fa-folder"></i> Documentos</button>
+                    <button onclick="navigate('calendar')" class="nav-btn"><i class="fas fa-calendar"></i> Calendario</button>
+                    <button onclick="navigate('cases')" class="nav-btn"><i class="fas fa-briefcase"></i> Casos</button>
+                    <button onclick="navigate('history')" class="nav-btn"><i class="fas fa-history"></i> Historial</button>
+                    <button onclick="navigate('login-screen')" class="nav-btn logout"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</button>
+                </nav>
+            </header>
+            <div class="dashboard-content">
+                <div class="card financial-card">
+                    <h3><i class="fas fa-wallet"></i> Estado Financiero</h3>
+                    <p><strong>Total Adeudado:</strong> $1,500</p>
+                    <p><strong>Cuotas Pendientes:</strong> 2 de 5</p>
+                    <p><strong>Estado:</strong> <span class="status atrasado">Atrasado</span></p>
+                </div>
+                <div class="card quick-links">
+                    <h3><i class="fas fa-link"></i> Accesos Rápidos</h3>
+                    <button onclick="navigate('invoices')" class="btn-secondary"><i class="fas fa-file-invoice"></i> Ver Facturas</button>
+                    <button onclick="navigate('calendar')" class="btn-secondary"><i class="fas fa-calendar-check"></i> Próximas Citas</button>
+                </div>
+            </div>
+            <footer class="footer">
+                <p>Cárdenas y Asociados © 2025 - Todos los derechos reservados</p>
+            </footer>
+        </div>
+
+        <!-- Facturas -->
+        <div id="invoices-screen" class="screen">
+            <header class="section-header">
+                <h2><i class="fas fa-file-invoice"></i> Mis Facturas</h2>
+                <button onclick="navigate('dashboard-screen')" class="btn-back"><i class="fas fa-arrow-left"></i> Volver</button>
+            </header>
+            <div class="section-content">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Monto</th>
+                            <th>Estado</th>
+                            <th>Expediente</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>01/03/2025</td>
+                            <td>$500</td>
+                            <td><span class="status pendiente">Pendiente</span></td>
+                            <td>EXP-2025-001</td>
+                            <td><button class="btn-action"><i class="fas fa-download"></i> Descargar</button></td>
+                        </tr>
+                        <tr>
+                            <td>15/02/2025</td>
+                            <td>$1,000</td>
+                            <td><span class="status pagada">Pagada</span></td>
+                            <td>EXP-2025-001</td>
+                            <td><button class="btn-action"><i class="fas fa-download"></i> Descargar</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Documentos -->
+        <div id="documents-screen" class="screen">
+            <header class="section-header">
+                <h2><i class="fas fa-folder"></i> Mis Documentos</h2>
+                <button onclick="navigate('dashboard-screen')" class="btn-back"><i class="fas fa-arrow-left"></i> Volver</button>
+            </header>
+            <div class="section-content">
+                <button onclick="alert('Subiendo documento...')" class="btn-primary"><i class="fas fa-upload"></i> Subir Documento</button>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Fuente</th>
+                            <th>Expediente</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Contrato.pdf</td>
+                            <td>Tú</td>
+                            <td>EXP-2025-001</td>
+                            <td><button class="btn-action"><i class="fas fa-download"></i> Descargar</button></td>
+                        </tr>
+                        <tr>
+                            <td>Factura 01-03.pdf</td>
+                            <td>Bufete</td>
+                            <td>EXP-2025-001</td>
+                            <td><button class="btn-action"><i class="fas fa-download"></i> Descargar</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Calendario -->
+        <div id="calendar-screen" class="screen">
+            <header class="section-header">
+                <h2><i class="fas fa-calendar"></i> Mi Calendario</h2>
+                <button onclick="navigate('dashboard-screen')" class="btn-back"><i class="fas fa-arrow-left"></i> Volver</button>
+            </header>
+            <div class="section-content">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Hora</th>
+                            <th>Motivo</th>
+                            <th>Expediente</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>15/03/2025</td>
+                            <td>14:00</td>
+                            <td>Audiencia</td>
+                            <td>EXP-2025-001</td>
+                            <td><button onclick="alert('Sincronizando...')" class="btn-action"><i class="fas fa-sync"></i> Sync Google</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Casos -->
+        <div id="cases-screen" class="screen">
+            <header class="section-header">
+                <h2><i class="fas fa-briefcase"></i> Mis Casos</h2>
+                <button onclick="navigate('dashboard-screen')" class="btn-back"><i class="fas fa-arrow-left"></i> Volver</button>
+            </header>
+            <div class="section-content">
+                <div class="case-card">
+                    <h3><i class="fas fa-file-alt"></i> Expediente: EXP-2025-001</h3>
+                    <p><strong>Estado:</strong> Audiencia Programada</p>
+                    <p><strong>Actualizaciones:</strong></p>
+                    <ul>
+                        <li>01/03/2025: Esperando Documentos</li>
+                        <li>02/03/2025: Audiencia programada</li>
+                    </ul>
+                </div>
+                <div class="case-card">
+                    <h3><i class="fas fa-file-alt"></i> Expediente: EXP-2025-002</h3>
+                    <p><strong>Estado:</strong> Pendiente de Resolución</p>
+                    <p><strong>Actualizaciones:</strong></p>
+                    <ul>
+                        <li>28/02/2025: Documentos enviados</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Historial -->
+        <div id="history-screen" class="screen">
+            <header class="section-header">
+                <h2><i class="fas fa-history"></i> Historial</h2>
+                <button onclick="navigate('dashboard-screen')" class="btn-back"><i class="fas fa-arrow-left"></i> Volver</button>
+            </header>
+            <div class="section-content">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Acción</th>
+                            <th>Expediente</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>01/03/2025</td>
+                            <td>Subiste documento: Contrato.pdf</td>
+                            <td>EXP-2025-001</td>
+                        </tr>
+                        <tr>
+                            <td>02/03/2025</td>
+                            <td>Admin actualizó caso</td>
+                            <td>EXP-2025-001</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Login Admin -->
+        <div id="admin-login" class="screen">
+            <div class="login-container">
+                <h1>Admin - Cárdenas y Asociados</h1>
+                <p class="subtitle">Panel de Gestión</p>
+                <div class="login-form">
+                    <input type="email" placeholder="Correo Admin" id="admin-email" class="input-field">
+                    <input type="password" placeholder="Contraseña (admin123)" id="admin-password" class="input-field">
+                    <button onclick="adminLogin()" class="btn-primary"><i class="fas fa-sign-in-alt"></i> Iniciar Sesión Admin</button>
+                    <p class="link"><a href="#" onclick="navigate('login-screen')">Volver al Login</a></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Panel Admin -->
+        <div id="admin-screen" class="screen">
+            <header class="dashboard-header">
+                <h2><i class="fas fa-user-shield"></i> Panel de Administración</h2>
+                <nav class="dashboard-nav">
+                    <button onclick="navigate('admin-screen')" class="nav-btn active"><i class="fas fa-cog"></i> Gestión</button>
+                    <button onclick="navigate('login-screen')" class="nav-btn logout"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</button>
+                </nav>
+            </header>
+            <div class="admin-content">
+                <div class="admin-actions">
+                    <button onclick="alert('Factura asignada')" class="btn-primary"><i class="fas fa-file-invoice"></i> Subir Factura</button>
+                    <button onclick="alert('Documento asignado')" class="btn-primary"><i class="fas fa-folder-plus"></i> Subir Documento</button>
+                    <button onclick="alert('Cita programada')" class="btn-primary"><i class="fas fa-calendar-plus"></i> Programar Cita</button>
+                    <button onclick="alert('Caso actualizado')" class="btn-primary"><i class="fas fa-edit"></i> Actualizar Caso</button>
+                </div>
+                <h3><i class="fas fa-users"></i> Clientes y Expedientes</h3>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Cliente</th>
+                            <th>Expediente</th>
+                            <th>Estado</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Juan Pérez</td>
+                            <td>EXP-2025-001</td>
+                            <td><span class="status activo">Activo</span></td>
+                            <td><button class="btn-action"><i class="fas fa-edit"></i> Editar</button></td>
+                        </tr>
+                        <tr>
+                            <td>María Gómez</td>
+                            <td>EXP-2025-002</td>
+                            <td><span class="status pendiente">Pendiente</span></td>
+                            <td><button class="btn-action"><i class="fas fa-edit"></i> Editar</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <footer class="footer">
+                <p>Cárdenas y Asociados © 2025 - Todos los derechos reservados</p>
+            </footer>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
