@@ -57,6 +57,11 @@ body {
     outline: none;
 }
 
+.input-field.textarea {
+    height: 100px;
+    resize: vertical;
+}
+
 .btn-primary {
     background: #FFC107;
     color: #1A237E;
@@ -146,7 +151,7 @@ body {
     margin-bottom: 15px;
 }
 
-.financial-card p {
+.financial-card p, .case-status-card p {
     font-size: 16px;
     margin: 10px 0;
 }
@@ -162,60 +167,50 @@ body {
 .status.pagada { background: #e8f5e9; color: #2e7d32; }
 .status.activo { background: #e8f5e9; color: #2e7d32; }
 
-.btn-secondary {
-    background: #1A237E;
-    color: #FFFFFF;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 8px;
-    margin: 5px;
-    cursor: pointer;
-    transition: transform 0.2s ease, background 0.3s ease;
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    animation: fadeIn 0.3s ease;
 }
 
-.btn-secondary:hover {
-    background: #FFC107;
-    color: #1A237E;
-    transform: scale(1.05);
-}
-
-/* Secciones */
-.section-header {
-    background: #1A237E;
-    color: #FFFFFF;
-    padding: 20px;
-    text-align: center;
+.modal-content {
+    background: #FFFFFF;
+    margin: 2% auto;
+    padding: 30px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 800px;
+    max-height: 90vh;
+    overflow-y: auto;
     position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
-.section-header h2 {
-    margin: 0;
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 30px;
+    color: #1A237E;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.modal-close:hover {
+    color: #FFC107;
+}
+
+.modal-content h2 {
     font-family: 'Playfair Display', serif;
     font-size: 28px;
-}
-
-.btn-back {
-    position: absolute;
-    left: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: #FFC107;
-    color: #1A237E;
-    padding: 8px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
-
-.btn-back:hover {
-    background: #FFB300;
-}
-
-.section-content {
-    padding: 30px;
-    max-width: 1200px;
-    margin: 0 auto;
+    margin-bottom: 20px;
 }
 
 .data-table {
@@ -223,7 +218,7 @@ body {
     border-collapse: collapse;
     background: #FFFFFF;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    animation: fadeIn 0.5s ease;
+    margin-bottom: 20px;
 }
 
 .data-table th, .data-table td {
@@ -255,13 +250,21 @@ body {
     transform: scale(1.05);
 }
 
+.btn-action.danger {
+    background: #d32f2f;
+    color: #FFFFFF;
+}
+
+.btn-action.danger:hover {
+    background: #b71c1c;
+}
+
 .case-card {
     background: #FFFFFF;
     padding: 20px;
     margin: 20px 0;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    animation: fadeIn 0.5s ease;
 }
 
 .case-card h3 {
@@ -293,6 +296,21 @@ body {
     margin-bottom: 30px;
 }
 
+.admin-table th:nth-child(4), .admin-table td:nth-child(4) {
+    width: 20%;
+}
+
+.edit-form label {
+    display: block;
+    margin: 15px 0 5px;
+    font-weight: bold;
+}
+
+.edit-form input, .edit-form select, .edit-form textarea {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
 /* Footer */
 .footer {
     background: #1A237E;
@@ -303,6 +321,16 @@ body {
     bottom: 0;
     width: 100%;
     font-size: 14px;
+}
+
+.tutorial-link {
+    color: #FFC107;
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+.tutorial-link:hover {
+    text-decoration: underline;
 }
 
 /* Animaciones */
@@ -326,5 +354,9 @@ body {
     .data-table th, .data-table td {
         font-size: 14px;
         padding: 10px;
+    }
+    .modal-content {
+        width: 95%;
+        margin: 5% auto;
     }
 }

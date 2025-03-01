@@ -30,11 +30,11 @@
                 <h2><i class="fas fa-user"></i> Bienvenido, Juan Pérez</h2>
                 <nav class="dashboard-nav">
                     <button onclick="navigate('dashboard-screen')" class="nav-btn active"><i class="fas fa-home"></i> Inicio</button>
-                    <button onclick="navigate('invoices')" class="nav-btn"><i class="fas fa-file-invoice"></i> Facturas</button>
-                    <button onclick="navigate('documents')" class="nav-btn"><i class="fas fa-folder"></i> Documentos</button>
-                    <button onclick="navigate('calendar')" class="nav-btn"><i class="fas fa-calendar"></i> Calendario</button>
-                    <button onclick="navigate('cases')" class="nav-btn"><i class="fas fa-briefcase"></i> Casos</button>
-                    <button onclick="navigate('history')" class="nav-btn"><i class="fas fa-history"></i> Historial</button>
+                    <button onclick="openModal('invoices-modal')" class="nav-btn"><i class="fas fa-file-invoice"></i> Facturas</button>
+                    <button onclick="openModal('documents-modal')" class="nav-btn"><i class="fas fa-folder"></i> Documentos</button>
+                    <button onclick="openModal('calendar-modal')" class="nav-btn"><i class="fas fa-calendar"></i> Calendario</button>
+                    <button onclick="openModal('cases-modal')" class="nav-btn"><i class="fas fa-briefcase"></i> Casos</button>
+                    <button onclick="openModal('history-modal')" class="nav-btn"><i class="fas fa-history"></i> Historial</button>
                     <button onclick="navigate('login-screen')" class="nav-btn logout"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</button>
                 </nav>
             </header>
@@ -45,174 +45,107 @@
                     <p><strong>Cuotas Pendientes:</strong> 2 de 5</p>
                     <p><strong>Estado:</strong> <span class="status atrasado">Atrasado</span></p>
                 </div>
-                <div class="card quick-links">
-                    <h3><i class="fas fa-link"></i> Accesos Rápidos</h3>
-                    <button onclick="navigate('invoices')" class="btn-secondary"><i class="fas fa-file-invoice"></i> Ver Facturas</button>
-                    <button onclick="navigate('calendar')" class="btn-secondary"><i class="fas fa-calendar-check"></i> Próximas Citas</button>
+                <div class="card case-status-card">
+                    <h3><i class="fas fa-gavel"></i> Sobre Mi Juicio</h3>
+                    <p><strong>Expediente:</strong> EXP-2025-001</p>
+                    <p><strong>Estado Actual:</strong> Audiencia Programada</p>
+                    <p><strong>Último Movimiento:</strong> 02/03/2025 - Audiencia programada para el 15/03</p>
                 </div>
             </div>
             <footer class="footer">
-                <p>Cárdenas y Asociados © 2025 - Todos los derechos reservados</p>
+                <p>Cárdenas y Asociados © 2025 - Todos los derechos reservados | <a href="tutorial.pdf" download="Tutorial_Cardenas.pdf" class="tutorial-link">Descargar Tutorial</a></p>
             </footer>
-        </div>
-
-        <!-- Facturas -->
-        <div id="invoices-screen" class="screen">
-            <header class="section-header">
-                <h2><i class="fas fa-file-invoice"></i> Mis Facturas</h2>
-                <button onclick="navigate('dashboard-screen')" class="btn-back"><i class="fas fa-arrow-left"></i> Volver</button>
-            </header>
-            <div class="section-content">
-                <table class="data-table">
-                    <thead>
-                        <tr>
-                            <th>Fecha</th>
-                            <th>Monto</th>
-                            <th>Estado</th>
-                            <th>Expediente</th>
-                            <th>Acción</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>01/03/2025</td>
-                            <td>$500</td>
-                            <td><span class="status pendiente">Pendiente</span></td>
-                            <td>EXP-2025-001</td>
-                            <td><button class="btn-action"><i class="fas fa-download"></i> Descargar</button></td>
-                        </tr>
-                        <tr>
-                            <td>15/02/2025</td>
-                            <td>$1,000</td>
-                            <td><span class="status pagada">Pagada</span></td>
-                            <td>EXP-2025-001</td>
-                            <td><button class="btn-action"><i class="fas fa-download"></i> Descargar</button></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <!-- Documentos -->
-        <div id="documents-screen" class="screen">
-            <header class="section-header">
-                <h2><i class="fas fa-folder"></i> Mis Documentos</h2>
-                <button onclick="navigate('dashboard-screen')" class="btn-back"><i class="fas fa-arrow-left"></i> Volver</button>
-            </header>
-            <div class="section-content">
-                <button onclick="alert('Subiendo documento...')" class="btn-primary"><i class="fas fa-upload"></i> Subir Documento</button>
-                <table class="data-table">
-                    <thead>
-                        <tr>
-                            <th>Nombre</th>
-                            <th>Fuente</th>
-                            <th>Expediente</th>
-                            <th>Acción</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Contrato.pdf</td>
-                            <td>Tú</td>
-                            <td>EXP-2025-001</td>
-                            <td><button class="btn-action"><i class="fas fa-download"></i> Descargar</button></td>
-                        </tr>
-                        <tr>
-                            <td>Factura 01-03.pdf</td>
-                            <td>Bufete</td>
-                            <td>EXP-2025-001</td>
-                            <td><button class="btn-action"><i class="fas fa-download"></i> Descargar</button></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <!-- Calendario -->
-        <div id="calendar-screen" class="screen">
-            <header class="section-header">
-                <h2><i class="fas fa-calendar"></i> Mi Calendario</h2>
-                <button onclick="navigate('dashboard-screen')" class="btn-back"><i class="fas fa-arrow-left"></i> Volver</button>
-            </header>
-            <div class="section-content">
-                <table class="data-table">
-                    <thead>
-                        <tr>
-                            <th>Fecha</th>
-                            <th>Hora</th>
-                            <th>Motivo</th>
-                            <th>Expediente</th>
-                            <th>Acción</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>15/03/2025</td>
-                            <td>14:00</td>
-                            <td>Audiencia</td>
-                            <td>EXP-2025-001</td>
-                            <td><button onclick="alert('Sincronizando...')" class="btn-action"><i class="fas fa-sync"></i> Sync Google</button></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <!-- Casos -->
-        <div id="cases-screen" class="screen">
-            <header class="section-header">
-                <h2><i class="fas fa-briefcase"></i> Mis Casos</h2>
-                <button onclick="navigate('dashboard-screen')" class="btn-back"><i class="fas fa-arrow-left"></i> Volver</button>
-            </header>
-            <div class="section-content">
-                <div class="case-card">
-                    <h3><i class="fas fa-file-alt"></i> Expediente: EXP-2025-001</h3>
-                    <p><strong>Estado:</strong> Audiencia Programada</p>
-                    <p><strong>Actualizaciones:</strong></p>
-                    <ul>
-                        <li>01/03/2025: Esperando Documentos</li>
-                        <li>02/03/2025: Audiencia programada</li>
-                    </ul>
-                </div>
-                <div class="case-card">
-                    <h3><i class="fas fa-file-alt"></i> Expediente: EXP-2025-002</h3>
-                    <p><strong>Estado:</strong> Pendiente de Resolución</p>
-                    <p><strong>Actualizaciones:</strong></p>
-                    <ul>
-                        <li>28/02/2025: Documentos enviados</li>
-                    </ul>
+            <!-- Modales Cliente -->
+            <div id="invoices-modal" class="modal">
+                <div class="modal-content">
+                    <span class="modal-close" onclick="closeModal('invoices-modal')">&times;</span>
+                    <h2><i class="fas fa-file-invoice"></i> Mis Facturas</h2>
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>Fecha</th><th>Monto</th><th>Estado</th><th>Expediente</th><th>Acción</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>01/03/2025</td><td>$500</td><td><span class="status pendiente">Pendiente</span></td><td>EXP-2025-001</td><td><button class="btn-action"><i class="fas fa-download"></i> Descargar</button></td></tr>
+                            <tr><td>15/02/2025</td><td>$1,000</td><td><span class="status pagada">Pagada</span></td><td>EXP-2025-001</td><td><button class="btn-action"><i class="fas fa-download"></i> Descargar</button></td></tr>
+                        </tbody>
+                    </table>
+                    <p><strong>Nota:</strong> Recordá abonar las facturas pendientes antes del vencimiento para evitar recargos.</p>
                 </div>
             </div>
-        </div>
-
-        <!-- Historial -->
-        <div id="history-screen" class="screen">
-            <header class="section-header">
-                <h2><i class="fas fa-history"></i> Historial</h2>
-                <button onclick="navigate('dashboard-screen')" class="btn-back"><i class="fas fa-arrow-left"></i> Volver</button>
-            </header>
-            <div class="section-content">
-                <table class="data-table">
-                    <thead>
-                        <tr>
-                            <th>Fecha</th>
-                            <th>Acción</th>
-                            <th>Expediente</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>01/03/2025</td>
-                            <td>Subiste documento: Contrato.pdf</td>
-                            <td>EXP-2025-001</td>
-                        </tr>
-                        <tr>
-                            <td>02/03/2025</td>
-                            <td>Admin actualizó caso</td>
-                            <td>EXP-2025-001</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div id="documents-modal" class="modal">
+                <div class="modal-content">
+                    <span class="modal-close" onclick="closeModal('documents-modal')">&times;</span>
+                    <h2><i class="fas fa-folder"></i> Mis Documentos</h2>
+                    <button class="btn-primary"><i class="fas fa-upload"></i> Subir Documento</button>
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>Nombre</th><th>Fuente</th><th>Expediente</th><th>Fecha</th><th>Acción</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Contrato.pdf</td><td>Tú</td><td>EXP-2025-001</td><td>01/03/2025</td><td><button class="btn-action"><i class="fas fa-download"></i> Descargar</button></td></tr>
+                            <tr><td>Factura 01-03.pdf</td><td>Bufete</td><td>EXP-2025-001</td><td>28/02/2025</td><td><button class="btn-action"><i class="fas fa-download"></i> Descargar</button></td></tr>
+                        </tbody>
+                    </table>
+                    <p><strong>Tip:</strong> Subí todos los documentos requeridos para acelerar el proceso de tu juicio.</p>
+                </div>
+            </div>
+            <div id="calendar-modal" class="modal">
+                <div class="modal-content">
+                    <span class="modal-close" onclick="closeModal('calendar-modal')">&times;</span>
+                    <h2><i class="fas fa-calendar"></i> Mi Calendario</h2>
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>Fecha</th><th>Hora</th><th>Motivo</th><th>Expediente</th><th>Ubicación</th><th>Acción</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>15/03/2025</td><td>14:00</td><td>Audiencia</td><td>EXP-2025-001</td><td>Juzgado N° 5</td><td><button onclick="alert('Sincronizando...')" class="btn-action"><i class="fas fa-sync"></i> Sync Google</button></td></tr>
+                            <tr><td>20/03/2025</td><td>10:00</td><td>Reunión con Abogado</td><td>EXP-2025-001</td><td>Oficina Central</td><td><button onclick="alert('Sincronizando...')" class="btn-action"><i class="fas fa-sync"></i> Sync Google</button></td></tr>
+                        </tbody>
+                    </table>
+                    <p><strong>Recordatorio:</strong> Llegá 15 minutos antes a tus citas programadas.</p>
+                </div>
+            </div>
+            <div id="cases-modal" class="modal">
+                <div class="modal-content">
+                    <span class="modal-close" onclick="closeModal('cases-modal')">&times;</span>
+                    <h2><i class="fas fa-briefcase"></i> Mis Juicios</h2>
+                    <div class="case-card">
+                        <h3><i class="fas fa-file-alt"></i> Expediente: EXP-2025-001</h3>
+                        <p><strong>Estado:</strong> Audiencia Programada</p>
+                        <p><strong>Último Movimiento:</strong> 02/03/2025 - Audiencia programada</p>
+                        <p><strong>Actualizaciones:</strong></p>
+                        <ul>
+                            <li>01/03/2025: Esperando Documentos</li>
+                            <li>02/03/2025: Audiencia programada para el 15/03</li>
+                        </ul>
+                    </div>
+                    <div class="case-card">
+                        <h3><i class="fas fa-file-alt"></i> Expediente: EXP-2025-002</h3>
+                        <p><strong>Estado:</strong> Pendiente de Resolución</p>
+                        <p><strong>Último Movimiento:</strong> 28/02/2025 - Documentos enviados</p>
+                        <p><strong>Actualizaciones:</strong></p>
+                        <ul>
+                            <li>28/02/2025: Documentos enviados al juzgado</li>
+                        </ul>
+                    </div>
+                    <p><strong>Nota:</strong> Contactá al estudio si tenés dudas sobre el progreso de tu juicio.</p>
+                </div>
+            </div>
+            <div id="history-modal" class="modal">
+                <div class="modal-content">
+                    <span class="modal-close" onclick="closeModal('history-modal')">&times;</span>
+                    <h2><i class="fas fa-history"></i> Historial</h2>
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>Fecha</th><th>Acción</th><th>Expediente</th><th>Detalles</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>01/03/2025</td><td>Subiste documento</td><td>EXP-2025-001</td><td>Contrato.pdf enviado</td></tr>
+                            <tr><td>02/03/2025</td><td>Admin actualizó caso</td><td>EXP-2025-001</td><td>Audiencia programada</td></tr>
+                        </tbody>
+                    </table>
+                    <p><strong>Info:</strong> Revisá tu historial para mantenerte al tanto de todas las acciones.</p>
+                </div>
             </div>
         </div>
 
@@ -245,29 +178,33 @@
                     <button onclick="alert('Documento asignado')" class="btn-primary"><i class="fas fa-folder-plus"></i> Subir Documento</button>
                     <button onclick="alert('Cita programada')" class="btn-primary"><i class="fas fa-calendar-plus"></i> Programar Cita</button>
                     <button onclick="alert('Caso actualizado')" class="btn-primary"><i class="fas fa-edit"></i> Actualizar Caso</button>
+                    <button onclick="openModal('create-user-modal')" class="btn-primary"><i class="fas fa-user-plus"></i> Crear Usuario</button>
                 </div>
                 <h3><i class="fas fa-users"></i> Clientes y Expedientes</h3>
-                <table class="data-table">
+                <table class="data-table admin-table">
                     <thead>
-                        <tr>
-                            <th>Cliente</th>
-                            <th>Expediente</th>
-                            <th>Estado</th>
-                            <th>Acción</th>
-                        </tr>
+                        <tr><th>Cliente</th><th>Expediente</th><th>Estado</th><th>Último Movimiento</th><th>Acción</th></tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td>Juan Pérez</td>
                             <td>EXP-2025-001</td>
-                            <td><span class="status activo">Activo</span></td>
-                            <td><button class="btn-action"><i class="fas fa-edit"></i> Editar</button></td>
+                            <td><span class="status activo">Audiencia Programada</span></td>
+                            <td>02/03/2025</td>
+                            <td>
+                                <button onclick="openModal('edit-case-1')" class="btn-action"><i class="fas fa-edit"></i> Editar</button>
+                                <button onclick="alert('Usuario eliminado')" class="btn-action danger"><i class="fas fa-trash"></i> Borrar</button>
+                            </td>
                         </tr>
                         <tr>
                             <td>María Gómez</td>
                             <td>EXP-2025-002</td>
-                            <td><span class="status pendiente">Pendiente</span></td>
-                            <td><button class="btn-action"><i class="fas fa-edit"></i> Editar</button></td>
+                            <td><span class="status pendiente">Pendiente de Resolución</span></td>
+                            <td>28/02/2025</td>
+                            <td>
+                                <button onclick="openModal('edit-case-2')" class="btn-action"><i class="fas fa-edit"></i> Editar</button>
+                                <button onclick="alert('Usuario eliminado')" class="btn-action danger"><i class="fas fa-trash"></i> Borrar</button>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -275,6 +212,117 @@
             <footer class="footer">
                 <p>Cárdenas y Asociados © 2025 - Todos los derechos reservados</p>
             </footer>
+            <!-- Modales Admin -->
+            <div id="edit-case-1" class="modal">
+                <div class="modal-content">
+                    <span class="modal-close" onclick="closeModal('edit-case-1')">&times;</span>
+                    <h2><i class="fas fa-briefcase"></i> Editar Expediente: EXP-2025-001</h2>
+                    <div class="edit-form">
+                        <label>Nombre del Cliente:</label>
+                        <input type="text" value="Juan Pérez" class="input-field">
+                        <label>Número de Expediente:</label>
+                        <input type="text" value="EXP-2025-001" class="input-field">
+                        <label>Juzgado:</label>
+                        <input type="text" value="Juzgado N° 5" class="input-field">
+                        <label>Secretaría:</label>
+                        <input type="text" value="Secretaría 2" class="input-field">
+                        <label>Estado Actual:</label>
+                        <select id="status-select-1" class="input-field" onchange="toggleCustomStatus('custom-status-1')">
+                            <option value="Sin movimientos significativos">Sin movimientos significativos</option>
+                            <option value="Audiencia Programada" selected>Audiencia Programada</option>
+                            <option value="En fase de apelación">En fase de apelación</option>
+                            <option value="Esperando audiencia">Esperando audiencia</option>
+                            <option value="Documentos presentados">Documentos presentados</option>
+                            <option value="Sentencia emitida">Sentencia emitida</option>
+                            <option value="En revisión">En revisión</option>
+                            <option value="Acuerdo alcanzado">Acuerdo alcanzado</option>
+                            <option value="Caso archivado">Caso archivado</option>
+                            <option value="Pendiente de resolución">Pendiente de resolución</option>
+                            <option value="Otro">Otro (Personalizado)</option>
+                        </select>
+                        <div id="custom-status-1" style="display: none;">
+                            <label>Estado Personalizado:</label>
+                            <input type="text" placeholder="Nombre del estado" class="input-field">
+                            <textarea placeholder="Descripción" class="input-field textarea"></textarea>
+                        </div>
+                        <label>Último Movimiento:</label>
+                        <input type="date" value="2025-03-02" class="input-field">
+                        <textarea placeholder="Descripción del último movimiento" class="input-field textarea">Audiencia programada para el 15/03</textarea>
+                        <button onclick="alert('Cambios guardados')" class="btn-primary"><i class="fas fa-save"></i> Guardar</button>
+                    </div>
+                </div>
+            </div>
+            <div id="edit-case-2" class="modal">
+                <div class="modal-content">
+                    <span class="modal-close" onclick="closeModal('edit-case-2')">&times;</span>
+                    <h2><i class="fas fa-briefcase"></i> Editar Expediente: EXP-2025-002</h2>
+                    <div class="edit-form">
+                        <label>Nombre del Cliente:</label>
+                        <input type="text" value="María Gómez" class="input-field">
+                        <label>Número de Expediente:</label>
+                        <input type="text" value="EXP-2025-002" class="input-field">
+                        <label>Juzgado:</label>
+                        <input type="text" value="Juzgado N° 3" class="input-field">
+                        <label>Secretaría:</label>
+                        <input type="text" value="Secretaría 1" class="input-field">
+                        <label>Estado Actual:</label>
+                        <select id="status-select-2" class="input-field" onchange="toggleCustomStatus('custom-status-2')">
+                            <option value="Sin movimientos significativos">Sin movimientos significativos</option>
+                            <option value="Audiencia Programada">Audiencia Programada</option>
+                            <option value="En fase de apelación">En fase de apelación</option>
+                            <option value="Esperando audiencia">Esperando audiencia</option>
+                            <option value="Documentos presentados">Documentos presentados</option>
+                            <option value="Sentencia emitida">Sentencia emitida</option>
+                            <option value="En revisión">En revisión</option>
+                            <option value="Acuerdo alcanzado">Acuerdo alcanzado</option>
+                            <option value="Caso archivado">Caso archivado</option>
+                            <option value="Pendiente de resolución" selected>Pendiente de resolución</option>
+                            <option value="Otro">Otro (Personalizado)</option>
+                        </select>
+                        <div id="custom-status-2" style="display: none;">
+                            <label>Estado Personalizado:</label>
+                            <input type="text" placeholder="Nombre del estado" class="input-field">
+                            <textarea placeholder="Descripción" class="input-field textarea"></textarea>
+                        </div>
+                        <label>Último Movimiento:</label>
+                        <input type="date" value="2025-02-28" class="input-field">
+                        <textarea placeholder="Descripción del último movimiento" class="input-field textarea">Documentos enviados al juzgado</textarea>
+                        <button onclick="alert('Cambios guardados')" class="btn-primary"><i class="fas fa-save"></i> Guardar</button>
+                    </div>
+                </div>
+            </div>
+            <div id="create-user-modal" class="modal">
+                <div class="modal-content">
+                    <span class="modal-close" onclick="closeModal('create-user-modal')">&times;</span>
+                    <h2><i class="fas fa-user-plus"></i> Crear Nuevo Usuario</h2>
+                    <div class="edit-form">
+                        <label>Nombre del Cliente:</label>
+                        <input type="text" placeholder="Ej: Ana López" class="input-field">
+                        <label>Correo Electrónico:</label>
+                        <input type="email" placeholder="Ej: ana.lopez@email.com" class="input-field">
+                        <label>Número de Expediente:</label>
+                        <input type="text" placeholder="Ej: EXP-2025-003" class="input-field">
+                        <label>Juzgado:</label>
+                        <input type="text" placeholder="Ej: Juzgado N° 7" class="input-field">
+                        <label>Secretaría:</label>
+                        <input type="text" placeholder="Ej: Secretaría 3" class="input-field">
+                        <label>Estado Inicial:</label>
+                        <select class="input-field">
+                            <option>Sin movimientos significativos</option>
+                            <option>Audiencia Programada</option>
+                            <option>En fase de apelación</option>
+                            <option>Esperando audiencia</option>
+                            <option>Documentos presentados</option>
+                            <option>Sentencia emitida</option>
+                            <option>En revisión</option>
+                            <option>Acuerdo alcanzado</option>
+                            <option>Caso archivado</option>
+                            <option>Pendiente de resolución</option>
+                        </select>
+                        <button onclick="alert('Usuario creado')" class="btn-primary"><i class="fas fa-save"></i> Crear</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <script src="script.js"></script>

@@ -24,5 +24,19 @@ function navigate(screenId) {
     });
     const targetScreen = document.getElementById(screenId);
     targetScreen.classList.add('active');
-    window.scrollTo(0, 0); // Vuelve arriba al cambiar pantalla
+    window.scrollTo(0, 0);
+}
+
+function openModal(modalId) {
+    document.getElementById(modalId).style.display = 'block';
+}
+
+function closeModal(modalId) {
+    document.getElementById(modalId).style.display = 'none';
+}
+
+function toggleCustomStatus(customId) {
+    const select = document.getElementById(`status-select-${customId.split('-')[2]}`);
+    const customDiv = document.getElementById(customId);
+    customDiv.style.display = select.value === 'Otro' ? 'block' : 'none';
 }
